@@ -1,6 +1,6 @@
 // interface for ErrorResponse.error
 interface IError<T = unknown> {
-  readonly name: string;
+  readonly code: string;
   readonly message: string;
   readonly issues?: T;
 }
