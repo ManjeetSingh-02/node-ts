@@ -24,9 +24,6 @@ export class ErrorResponse<T = unknown> extends Error implements IErrorResponse<
     // set the prototype explicitly to maintain the correct prototype chain
     Object.setPrototypeOf(this, new.target.prototype);
 
-    // set the name of the error to the name provided in the error object
-    this.name = error.name;
-
     // capture the stack trace
     Error.captureStackTrace(this, this.constructor);
   }
