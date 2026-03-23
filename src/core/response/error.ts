@@ -1,25 +1,22 @@
-// interface for ErrorResponse.error
-interface IError<T = unknown> {
-  readonly code: string;
-  readonly message: string;
-  readonly issues?: T;
-}
+// type-imports
+import type { IErrorResponse } from '../types/response.js';
 
-// interface for ErrorResponse
-interface IErrorResponse<T = unknown> {
-  readonly success: boolean;
-  readonly error: IError<T>;
-}
-
-// class to standardize API Error responses
+// class to standardize API Error Response
 export class ErrorResponse<T = unknown> extends Error implements IErrorResponse<T> {
-  // set success to always be fale for ErrorResponse
   readonly success = false;
+  readonly message: string;
+  readonly code: string;
+  readonly issues: T;
 
-  // constructor to initialize the error
-  constructor(readonly error: IError<T>) {
+  // constructor to initialize ErrorResponse
+  constructor({ message, code, issues }: { message: string; code: string; issues: T }) {
     // call the parent constructor with the error message
-    super(error.message);
+    super(message);
+
+    // assign the properties to the instance
+    this.message = message;
+    this.code = code;
+    this.issues = issues;
 
     // set the prototype explicitly to maintain the correct prototype chain
     Object.setPrototypeOf(this, new.target.prototype);

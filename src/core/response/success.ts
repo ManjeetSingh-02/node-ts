@@ -1,18 +1,16 @@
-// interface for SuccessResponse
-interface ISuccessResponse<T = unknown> {
-  success: boolean;
-  message: string;
-  data?: T;
-}
+// type-imports
+import type { ISuccessResponse } from '../types/response.js';
 
-// class to standardize API Success responses
+// class to standardize API Success Response
 export class SuccessResponse<T = unknown> implements ISuccessResponse<T> {
-  // set success to always be true for SuccessResponse
   readonly success = true;
+  readonly message: string;
+  readonly data: T;
 
-  // constructor to initialize message and optional data
-  constructor(
-    readonly message: string,
-    readonly data?: T
-  ) {}
+  // constructor to initialize ErrorResponse
+  constructor({ message, data }: { message: string; data: T }) {
+    // assign the properties to the instance
+    this.message = message;
+    this.data = data;
+  }
 }
