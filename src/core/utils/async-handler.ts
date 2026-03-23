@@ -1,27 +1,16 @@
 // type-imports
 import type { Request, Response, NextFunction } from 'express';
 
-// type definition for the function that will be wrapped by the async-handler
-type ExecutableFunction = (
+// type definition for the controller that will be wrapped by the async-handler
+type Controller<T = unknown> = (
   request: Request,
-  response: Response,
+  response: Response<T>,
   nextFunction: NextFunction
-) => void | Promise<void>;
+) => unknown | Promise<unknown>;
 
-// type definition for the function that will be returned by the async-handler
-type AsyncHandlerFunction = (
-  request: Request,
-  response: Response,
-  nextFunction: NextFunction
-) => Promise<void>;
-
-// function to wrap async handlers and catch errors
-export default function (executableFunction: ExecutableFunction): AsyncHandlerFunction {
-  return function (
-    request: Request,
-    response: Response,
-    nextFunction: NextFunction
-  ): Promise<void> {
-    return Promise.resolve(executableFunction(request, response, nextFunction)).catch(nextFunction);
+// function to wrap controllers inside async-handler
+export default function <T = unknown>(controller: Controller<T>) {
+  return function (request: Request, response: Response<T>, nextFunction: NextFunction) {
+    return Promise.resolve(controller(request, response, nextFunction)).catch(nextFunction);
   };
 }
