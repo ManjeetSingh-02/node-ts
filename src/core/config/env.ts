@@ -11,7 +11,7 @@ const envSchema = z.object({
   PORT: z.coerce.number().int().positive(),
   DATABASE_URL: z.url({ error: 'DATABASE_URL must be a valid URL' }),
   NODE_ENV: z.enum(Object.values(APP_CONFIG.NODE_ENVS)),
-  COOKIE_SECRET: z.string().min(32, { error: 'COOKIE_SECRET must be 32 chars' }),
+  COOKIE_SECRET: z.string().min(32, { error: 'COOKIE_SECRET must be atleast 32 chars' }),
 });
 
 // function to validate environment variables
