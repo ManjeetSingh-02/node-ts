@@ -9,7 +9,7 @@ type Controller<T = unknown> = (
 ) => unknown | Promise<unknown>;
 
 // function to wrap controllers inside async-handler
-export default function <T = unknown>(controller: Controller<T>) {
+export function asyncHandler<T = unknown>(controller: Controller<T>) {
   return function (request: Request, response: Response<T>, nextFunction: NextFunction) {
     return Promise.resolve(controller(request, response, nextFunction)).catch(nextFunction);
   };
