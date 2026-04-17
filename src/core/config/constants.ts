@@ -4,13 +4,13 @@ export const APP_CONFIG = {
     DEVELOPMENT: 'development',
     PRODUCTION: 'production',
     TESTING: 'testing',
-  },
+  } as const,
 
   // all module related constants
   MODULE_CONFIG: {
     DIR_NAME: 'modules',
     CURRENT_VERSION: 'v1',
-  },
+  } as const,
 
   // all winston related constants
   WINSTON_CONFIG: {
@@ -19,5 +19,5 @@ export const APP_CONFIG = {
     ERROR_FILE_NAME: 'error.log',
     DATE_PATTERN: 'YYYY-MM-DD',
     TIMESTAMP_FORMAT: 'HH:mm:ss',
-  },
+  } as const,
 };
