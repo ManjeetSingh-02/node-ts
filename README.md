@@ -1,4 +1,4 @@
-# express-ts-template
+# express-typescript
 Express with TypeScript Template
 
 ## .env
