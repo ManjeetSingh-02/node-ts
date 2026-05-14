@@ -1,5 +1,5 @@
-# express-typescript
-Express with TypeScript Template
+# node-ts
+NodeJS with TypeScript Template
 
 ## .env
 ```env
