@@ -20,11 +20,7 @@ function validateEnv() {
     return envSchema.parse(process.env);
   } catch (error: unknown) {
     // if zod error, format and throw a new error with all issues
-    if (error instanceof z.ZodError)
-      throw new Error(
-        error.issues.map(issue => `${issue.path.join('.')}: ${issue.message}`).join('\n'),
-        { cause: error }
-      );
+    if (error instanceof z.ZodError) throw new Error(z.prettifyError(error), { cause: error });
 
     // if it's not a zod error, rethrow it
     throw error;
