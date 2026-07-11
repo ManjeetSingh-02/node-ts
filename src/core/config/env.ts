@@ -7,7 +7,10 @@ import z from 'zod';
 
 // zod schema for environment variables
 const envSchema = z.object({
-  ORIGIN_URL: z.url({ error: 'ORIGIN_URL must be a valid URL' }),
+  ORIGINS: z
+    .string()
+    .transform(v => v.split(',').map(o => o.trim()))
+    .pipe(z.array(z.url())),
   PORT: z.coerce.number().int().positive(),
   DATABASE_URL: z.url({ error: 'DATABASE_URL must be a valid URL' }),
   NODE_ENV: z.enum(Object.values(APP_CONFIG.NODE_ENVS)),
