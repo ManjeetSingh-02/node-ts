@@ -18,5 +18,5 @@ pnpm add cors dotenv express winston winston-daily-rotate-file zod
 
 ## Install dev dependencies
 ```bash
-pnpm add -D @eslint/js @types/cors @types/express @types/node eslint eslint-config-prettier globals jiti prettier tsx typescript typescript-eslint tsc-alias
+pnpm add -D @eslint/js @types/cors @types/express @types/node eslint eslint-config-prettier globals jiti prettier tsx typescript@6 typescript-eslint tsc-alias
 ```
