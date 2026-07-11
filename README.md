@@ -9,15 +9,14 @@ DATABASE_URL=mongodb://localhost:27017/your_database_name
 or
 DATABASE_URL=postgresql://username:password@localhost:5432/your_database_name
 NODE_ENV=development
-COOKIE_SECRET=minimum_of_32_char_cookie_secret
 ```
 
 ## Install dependencies
 ```bash
-pnpm add cookie-parser cors dotenv express winston winston-daily-rotate-file zod
+pnpm add cors dotenv express winston winston-daily-rotate-file zod
 ```
 
 ## Install dev dependencies
 ```bash
-pnpm add -D @eslint/js @types/cookie-parser @types/cors @types/express @types/node eslint eslint-config-prettier globals jiti prettier tsx typescript typescript-eslint tsc-alias
+pnpm add -D @eslint/js @types/cors @types/express @types/node eslint eslint-config-prettier globals jiti prettier tsx typescript typescript-eslint tsc-alias
 ```
