@@ -1,12 +1,14 @@
 // internal-imports
 import { ErrorResponse } from '../response/error.js';
 
+// external-imports
+import z from 'zod';
+
 // type-imports
-import type { ZodObject } from 'zod';
 import type { Request, Response, NextFunction } from 'express';
 
 // function for validating request body using zod schema
-export function validateZodSchema(schema: ZodObject) {
+export function validateZodSchema(schema: z.ZodObject) {
   return function (request: Request, response: Response, nextFunction: NextFunction) {
     // validate request against the provided schema
     const result = schema.safeParse({
@@ -18,10 +20,10 @@ export function validateZodSchema(schema: ZodObject) {
     // if validation fails
     if (!result.success)
       return response.status(400).json(
-        new ErrorResponse<Array<string>>({
+        new ErrorResponse({
           message: 'Invalid request data',
           code: 'VALIDATION_ERROR',
-          issues: result.error.issues.map(issue => `${issue.path.join('.')}: ${issue.message}`),
+          issues: z.flattenError(result.error).fieldErrors,
         })
       );
 
