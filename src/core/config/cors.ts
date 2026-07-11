@@ -6,6 +6,6 @@ import type { CorsOptions } from 'cors';
 
 // CORS configuration options
 export const corsConfig: CorsOptions = {
-  origin: env.ORIGIN_URL,
+  origin: env.ORIGINS,
   credentials: true,
 } as const;
