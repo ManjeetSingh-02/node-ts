@@ -8,9 +8,9 @@ import z from 'zod';
 // zod schema for environment variables
 const envSchema = z.object({
   ORIGINS: z
-    .string()
+    .string({ error: 'ORIGINS must be a valid string' })
     .transform(v => v.split(',').map(o => o.trim()))
-    .pipe(z.array(z.url())),
+    .pipe(z.array(z.url({ error: 'Every ORIGIN must be a valid URL' }))),
   PORT: z.coerce.number().int().positive(),
   DATABASE_URL: z.url({ error: 'DATABASE_URL must be a valid URL' }),
   NODE_ENV: z.enum(Object.values(APP_CONFIG.NODE_ENVS)),
