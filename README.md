@@ -3,7 +3,7 @@ NodeJS with TypeScript Template
 
 ## .env
 ```env
-ORIGINS=http://localhost:5173, http://localhost:5174, http://localhost:5175
+WEB_ORIGINS=http://localhost:5173, http://localhost:5174, http://localhost:5175
 PORT=3000
 DATABASE_URL=mongodb://localhost:27017/your_database_name
 or
