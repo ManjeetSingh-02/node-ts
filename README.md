@@ -13,7 +13,7 @@ NODE_ENV=development
 
 ## Install dependencies
 ```bash
-pnpm add cors dotenv express winston winston-daily-rotate-file zod
+pnpm add cors dotenv express winston zod
 ```
 
 ## Install dev dependencies
